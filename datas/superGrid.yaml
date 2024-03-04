@@ -32,7 +32,7 @@ Game:
       description: Maps different endings of the game to specific game over messages.
   functions:
     transition:
-      description: Checks if move is valid, then updates the board, auxiliary, and repString accordingly.
+      description: Checks if move is valid, then updates the board and auxiliary accordingly. This function should not update the repString directly.
       #serverPredefined: true
       arguments:
       - name: move
@@ -41,6 +41,8 @@ Game:
       returns:
         type: boolean
         description: True if move is valid, False if move is not valid.
+    updateRepString:
+      description: Uses information from board and auxiliary to update the repString.
     convertSubmoveToMove:
       description: Translates move notation from the sub-game into the standardized SuperGridMove object.
       #serverPredefined: true
