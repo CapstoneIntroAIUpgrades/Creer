@@ -19,8 +19,8 @@ Game:
       type: const string
       description: The list of all abbreviated names for each piece that is in the game. Each piece should be represented by a single character.
     board:
-      type: list<list<char>>
-      description: 2D list of what pieces are placed in cells on the board. Space characters denote an empty cell.
+      type: list<list<string>>
+      description: 2D list of what pieces are placed in cells on the board. Each piece should be one character. Space characters denote an empty cell.
     auxiliary:
       type: list<string>
       description: All information needed for the repString that is not shared between all SuperGrid games. For example, the board and turn player info should not be in this list, but castling availability in chess would.
@@ -30,6 +30,9 @@ Game:
     gameOverMessages:
       type: dictionary<int, string>
       description: Maps different endings of the game to specific game over messages.
+    playerOrder:
+      type: list<string>
+      description: Defines the order in which players take their turns. Each player name should be one character.
   functions:
     transition:
       description: Checks if move is valid, then updates the board and auxiliary accordingly. This function should not update the repString directly.
@@ -77,8 +80,8 @@ Game:
         type: int
         description: The y position of where the moving piece moved. Null if not used.
       placedPiece:
-        type: char
-        description: The name of the piece that will be placed onto the board. Null if not used.
+        type: string
+        description: The name of the piece that will be placed onto the board. Should be one character. Null if not used.
       placeX:
         type: int
         description: The x position of the piece that will be placed onto the board. Null if not used.
